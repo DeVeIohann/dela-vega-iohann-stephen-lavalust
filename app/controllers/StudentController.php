@@ -14,12 +14,12 @@ class StudentController extends Controller {
     }
 
     public function profile() {
-        // Enforce route middleware
+
         $this->call->middleware('StudentMiddleware');
 
         $data = [
             'page_title'          => 'My Student Profile - Digital Dashboard',
-            'student_id'          => 'MCC2023-00861',
+            'student_id'          => 'MCC2023-00861',   
             'name'                => 'Iohann Stephen Dela Vega',
             'course'              => 'BS Information Technologies',
             'year'                => '3rd Year',
