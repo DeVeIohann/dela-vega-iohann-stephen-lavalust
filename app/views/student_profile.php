@@ -9,120 +9,80 @@
             font-family: 'Trebuchet MS', 'Impact', 'Arial Black', sans-serif; 
             background: #2b2622; 
             background-image: repeating-linear-gradient(45deg, #231f1c, #231f1c 10px, #2b2622 10px, #2b2622 20px);
-            color: #2b2622; 
+            color: #ece3d0; 
             display: flex; 
             justify-content: center; 
             align-items: center; 
             min-height: 100vh; 
             margin: 0; 
-            padding: 30px 0; 
+            padding: 20px;
         }
         .dossier-card { 
-            background: #ebd8b0; 
+            background: #d8c8a8; 
+            color: #2b2622; 
             padding: 35px; 
             border-radius: 4px; 
-            box-shadow: 0 10px 0 #181513, 0 15px 30px rgba(0,0,0,0.7); 
+            box-shadow: 0 8px 0 #181513, 0 15px 25px rgba(0,0,0,0.6); 
             border: 4px solid #3c352e; 
-            width: 480px; 
+            width: 520px; 
             position: relative;
         }
-        .classified-stamp {
+        .dossier-card::before {
+            content: "CLASSIFIED";
             position: absolute;
-            top: 25px;
+            top: -15px;
             right: 25px;
-            border: 4px solid #b8383b;
-            color: #b8383b;
-            font-family: 'Impact', sans-serif;
-            font-size: 18px;
+            background: #b8383b;
+            color: #f3e6d0;
+            font-size: 12px;
+            font-weight: 900;
             padding: 4px 10px;
-            text-transform: uppercase;
+            border: 2px solid #3c352e;
             letter-spacing: 2px;
-            transform: rotate(-8deg);
-            opacity: 0.85;
-            pointer-events: none;
+            transform: rotate(-2deg);
         }
-        h2 { 
+        h1 { 
             font-family: 'Impact', 'Arial Black', sans-serif;
-            color: #3c352e; 
-            border-bottom: 4px solid #b8383b; 
-            padding-bottom: 8px; 
-            margin-top: 0; 
-            font-size: 26px; 
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            width: 65%;
-        }
-        .info-row { 
-            display: flex; 
-            justify-content: space-between; 
-            margin-bottom: 8px; 
-            font-size: 14px; 
-            border-bottom: 2px dotted #b5a482; 
-            padding-bottom: 4px; 
-        }
-        .label { 
-            font-weight: bold; 
-            color: #6e604f; 
-            text-transform: uppercase;
-        }
-        .value { 
-            color: #1a1714; 
-            font-weight: bold; 
-            text-align: right; 
-        }
-        .section-header { 
-            font-family: 'Impact', sans-serif;
-            font-size: 17px; 
             text-transform: uppercase;
             color: #b8383b; 
-            margin-top: 18px; 
-            margin-bottom: 6px; 
+            font-size: 26px; 
+            margin-top: 0;
+            margin-bottom: 5px; 
             letter-spacing: 1px;
         }
-        .description-box {
-            background: #dfcd9f;
-            border: 2px dashed #b5a482;
-            padding: 10px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #3c352e;
-            line-height: 1.4;
+        .subtitle { 
+            font-size: 12px; 
+            font-weight: bold;
+            color: #5c5247;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            border-bottom: 2px dashed #b5a482;
+            padding-bottom: 8px;
+        }
+        .field-group {
+            margin-bottom: 10px;
+            background: #c2b293;
+            padding: 8px 12px;
             border-radius: 3px;
+            border-left: 4px solid #b8383b;
         }
-        .tag-container { 
-            display: flex; 
-            flex-wrap: wrap; 
-            gap: 6px; 
-            margin-bottom: 10px; 
-        }
-        .tag-red { 
-            background: #b8383b; 
-            color: #f3e6d0; 
-            padding: 4px 10px; 
-            border-radius: 2px; 
-            font-size: 12px; 
-            font-weight: bold; 
+        .field-label {
+            font-size: 11px;
+            font-weight: bold;
+            color: #5c5247;
             text-transform: uppercase;
-            border: 2px solid #3c352e;
+            letter-spacing: 0.5px;
         }
-        .tag-blu { 
-            background: #5b7a8c; 
-            color: #f3e6d0; 
-            padding: 4px 10px; 
-            border-radius: 2px; 
-            font-size: 12px; 
-            font-weight: bold; 
-            text-transform: uppercase;
-            border: 2px solid #3c352e;
-        }
-        .nav-group { 
-            display: flex; 
-            gap: 12px; 
-            margin-top: 24px; 
+        .field-value {
+            font-size: 14px;
+            font-weight: bold;
+            color: #1a1714;
         }
         .btn { 
-            flex: 1; 
-            text-align: center; 
+            display: inline-block; 
+            width: 100%;
+            box-sizing: border-box;
             padding: 12px; 
             text-decoration: none; 
             font-family: 'Impact', 'Arial Black', sans-serif;
@@ -130,66 +90,66 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             border-radius: 3px; 
-            color: white; 
+            margin-top: 15px; 
+            text-align: center; 
             border: 3px solid #1a1714;
             box-shadow: 0 4px 0 #1a1714;
+            background: #5b7a8c; 
+            color: #f3e6d0; 
             transition: all 0.1s ease;
         }
-        .btn:active {
-            transform: translateY(4px);
-            box-shadow: 0 0 0 #1a1714;
-        }
-        .btn-home { 
-            background: #5b7a8c; 
-        }
-        .btn-home:hover { 
-            background: #6a8c9e; 
-        }
-        .btn-logout { 
-            background: #b8383b; 
-        }
-        .btn-logout:hover { 
-            background: #d04043; 
-        }
+        .btn:hover { background: #6a8c9e; }
+        .btn:active { transform: translateY(4px); box-shadow: 0 0 0 #1a1714; }
     </style>
 </head>
 <body>
 
     <div class="dossier-card">
-        <div class="classified-stamp">CONFIDENTIAL</div>
-        <h2>Personnel File</h2>
-        
-        <div class="info-row"><span class="label">Mercenary ID</span><span class="value"><?= $student_id; ?></span></div>
-        <div class="info-row"><span class="label">Operative Name</span><span class="value"><?= $name; ?></span></div>
-        <div class="info-row"><span class="label">Class / Specialty</span><span class="value"><?= $course; ?></span></div>
-        <div class="info-row"><span class="label">Rank & Squad</span><span class="value"><?= $year; ?> (<?= $section; ?>)</span></div>
-        <div class="info-row"><span class="label">Comms Email</span><span class="value"><?= $email; ?></span></div>
-        <div class="info-row"><span class="label">Deployment Base</span><span class="value"><?= $address; ?></span></div>
-        <div class="info-row"><span class="label">Secure Contact</span><span class="value"><?= $contact_number; ?></span></div>
+        <h1>Mercenary Personnel Dossier</h1>
+        <div class="subtitle">Mann Co. Academic Database File</div>
 
-        <div class="section-header">Profile Description</div>
-        <div class="description-box">
-            <?= $profile_description; ?>
+        <div class="field-group">
+            <div class="field-label">Student ID</div>
+            <div class="field-value"><?= htmlspecialchars($student_id); ?></div>
         </div>
 
-        <div class="section-header">Loadout & Specializations</div>
-        <div class="tag-container">
-            <?php foreach ($skills as $skill): ?>
-                <span class="tag-red"><?= $skill; ?></span>
-            <?php endforeach; ?>
+        <div class="field-group">
+            <div class="field-label">Full Name</div>
+            <div class="field-value"><?= htmlspecialchars($name); ?></div>
         </div>
 
-        <div class="section-header">Off-Duty Passions</div>
-        <div class="tag-container">
-            <?php foreach ($hobbies as $hobby): ?>
-                <span class="tag-blu"><?= $hobby; ?></span>
-            <?php endforeach; ?>
+        <div class="field-group">
+            <div class="field-label">Course & Level</div>
+            <div class="field-value"><?= htmlspecialchars($course); ?> (<?= htmlspecialchars($year); ?> - <?= htmlspecialchars($section); ?>)</div>
         </div>
 
-        <div class="nav-group">
-            <a href="http://localhost/LALA/LavaLust/student" class="btn btn-home">Base HQ</a>
-            <a href="http://localhost/LALA/LavaLust/student/logout" class="btn btn-logout">Abort Mission</a>
+        <div class="field-group">
+            <div class="field-label">Comms / Email</div>
+            <div class="field-value"><?= htmlspecialchars($email); ?> | <?= htmlspecialchars($contact_number); ?></div>
         </div>
+
+        <div class="field-group">
+            <div class="field-label">Base Address</div>
+            <div class="field-value"><?= htmlspecialchars($address); ?></div>
+        </div>
+
+        <div class="field-group">
+            <div class="field-label">Specialist Skills</div>
+            <div class="field-value"><?= htmlspecialchars(is_array($skills) ? implode(', ', $skills) : $skills); ?></div>
+        </div>
+
+        <div class="field-group">
+            <div class="field-label">Off-Duty Hobbies</div>
+            <div class="field-value"><?= htmlspecialchars(is_array($hobbies) ? implode(', ', $hobbies) : $hobbies); ?></div>
+        </div>
+
+        <div class="field-group">
+            <div class="field-label">Dossier Description</div>
+            <div class="field-value"><?= htmlspecialchars($profile_description); ?></div>
+        </div>
+
+        <!-- Dynamic relative route -->
+        <a href="<?= site_url('student/logout'); ?>" class="btn">Abort Mission (Logout)</a>
     </div>
 
 </body>

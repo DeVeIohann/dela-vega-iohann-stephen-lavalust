@@ -5,23 +5,17 @@ class StudentController extends Controller {
 
     public function __construct() {
         parent::__construct();
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
+        $this->call->library('session');
     }
 
     public function index() {
-        $data = [
-            'page_title' => 'Portal Hub | Student Information System'
-        ];
-
+        $data['page_title'] = "Mann Co. Academic Terminal";
         $this->call->view('student_index', $data);
     }
 
     public function profile() {
-        require_once APP_DIR . 'middlewares/StudentMiddleware.php';
-        $middleware = new StudentMiddleware();
-        $middleware->handle();
+        // Enforce route middleware
+        $this->call->middleware('StudentMiddleware');
 
         $data = [
             'page_title'          => 'My Student Profile - Digital Dashboard',
@@ -43,17 +37,14 @@ class StudentController extends Controller {
 
     public function login() {
         $_SESSION['student_logged_in'] = true;
-        unset($_SESSION['auth_error']);
-        header('Location: http://localhost/LALA/LavaLust/student/profile');
+        header('Location: ' . site_url('student/profile'));
         exit();
     }
 
     public function logout() {
         unset($_SESSION['student_logged_in']);
-        unset($_SESSION['auth_error']);
         session_destroy();
-
-        header('Location: http://localhost/LALA/LavaLust/student');
+        header('Location: ' . site_url('student'));
         exit();
     }
 }

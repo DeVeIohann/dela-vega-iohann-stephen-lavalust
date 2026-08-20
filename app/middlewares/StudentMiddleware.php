@@ -6,10 +6,10 @@ class StudentMiddleware {
             session_start();
         }
 
-        // TF2 Mercenary Access Verification
+        // Check authentication state
         if (!isset($_SESSION['student_logged_in']) || $_SESSION['student_logged_in'] !== true) {
-            $_SESSION['auth_error'] = "INTRUDER ALERT! A SPY IS IN THE BASE! You must authenticate before accessing classified dossier files.";
-            header('Location: http://localhost/LALA/LavaLust/student');
+            $_SESSION['auth_error'] = "INTRUDER ALERT! RED SPY IS IN THE BASE! You must authenticate before accessing classified dossier files.";
+            header('Location: ' . site_url('student'));
             exit();
         }
     }

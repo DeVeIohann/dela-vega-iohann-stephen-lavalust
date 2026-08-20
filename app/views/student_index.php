@@ -119,16 +119,16 @@
 
         <?php if (isset($_SESSION['auth_error'])): ?>
             <div class="alert-error">
-                <strong>[SECURITY ALERT]:</strong> <?= $_SESSION['auth_error']; ?>
+                <strong>[ADMINISTRATOR OVERRIDE]:</strong> <?= $_SESSION['auth_error']; ?>
                 <?php unset($_SESSION['auth_error']); ?>
             </div>
         <?php endif; ?>
 
-        <!-- Attempts direct profile entry (Triggers StudentMiddleware restriction) -->
-        <a href="http://localhost/LALA/LavaLust/student/profile" class="btn btn-secondary">Test Direct Profile Access</a>
+        <!-- Dynamically points to profile -->
+        <a href="<?= site_url('student/profile'); ?>" class="btn btn-secondary">Test Direct Profile Access</a>
 
-        <!-- Sets session state and grants access -->
-        <a href="http://localhost/LALA/LavaLust/student/login" class="btn btn-primary">Authenticate Mercenary</a>
+        <!-- Dynamically points to login -->
+        <a href="<?= site_url('student/login'); ?>" class="btn btn-primary">Authenticate Mercenary</a>
     </div>
 
 </body>
