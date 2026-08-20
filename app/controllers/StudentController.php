@@ -6,6 +6,7 @@ class StudentController extends Controller {
     public function __construct() {
         parent::__construct();
         $this->call->library('session');
+        $this->call->helper('url'); // Loads site_url() helper
     }
 
     public function index() {
@@ -14,12 +15,12 @@ class StudentController extends Controller {
     }
 
     public function profile() {
-
+        // Enforce route middleware
         $this->call->middleware('StudentMiddleware');
 
         $data = [
             'page_title'          => 'My Student Profile - Digital Dashboard',
-            'student_id'          => 'MCC2023-00861',   
+            'student_id'          => 'MCC2023-00861',
             'name'                => 'Iohann Stephen Dela Vega',
             'course'              => 'BS Information Technologies',
             'year'                => '3rd Year',
@@ -27,7 +28,7 @@ class StudentController extends Controller {
             'email'               => 'delavegaiohann0@gmail.com',
             'address'             => 'Masipit, Calapan City, Oriental Mindoro',
             'contact_number'      => '+63 967 943 4592',
-            'profile_description' => 'Dedicated Information Technology student specializing in network architecture, database optimizations, and low-level system design. Experienced in developing custom full-stack solutions and routing protocols.',
+            'profile_description' => 'Dedicated Information Technology student specializing in network architecture, database optimizations, and low-level system design.',
             'skills'              => ['PHP / LavaLust', 'C#', 'SQL', 'Cisco Networking', 'x86 Assembly'],
             'hobbies'             => ['Reading Light Novels & Manhua', 'Shooter/Moba Games', 'Fishing', 'Swimming']
         ];
