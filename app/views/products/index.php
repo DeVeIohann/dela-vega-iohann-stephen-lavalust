@@ -131,6 +131,7 @@
 
         .link:hover { text-decoration: underline; }
     </style>
+    <link rel="stylesheet" href="<?=site_url('public/css/lavalust.css')?>">
 </head>
 <body>
     <div class="container">

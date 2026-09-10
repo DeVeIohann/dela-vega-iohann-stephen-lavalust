@@ -104,6 +104,7 @@
             color: var(--gold-soft);
         }
     </style>
+    <link rel="stylesheet" href="<?=site_url('public/css/lavalust.css')?>">
 </head>
 <body>
     <div class="panel">
