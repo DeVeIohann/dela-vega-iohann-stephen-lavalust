@@ -289,11 +289,13 @@ class Router
             $method = 'index';
 
             if (strpos($callback, '::') !== false) {
-                [$controller, $method] = explode('::', $callback);
+                [$controller, $method] = explode('::', $callback, 2);
             } elseif (strpos($callback, '->') !== false) {
-                [$controller, $method] = explode('->', $callback);
+                [$controller, $method] = explode('->', $callback, 2);
             } elseif (strpos($callback, '@') !== false) {
-                [$controller, $method] = explode('@', $callback);
+                [$controller, $method] = explode('@', $callback, 2);
+            } elseif (strpos($callback, '/') !== false) {
+                [$controller, $method] = explode('/', $callback, 2);
             } else {
                 $controller = $callback;
                 $method = 'index';
