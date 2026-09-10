@@ -86,6 +86,15 @@ class Model {
         
         //Soft Delete Column
         $this->soft_delete_column = config_item('soft_delete_column');
+
+        // Ensure the default database connection exists before model methods use $this->db.
+        if (!isset(lava_instance()->db) && method_exists(lava_instance()->call ?? null, 'database')) {
+            lava_instance()->call->database();
+        }
+
+        if (isset(lava_instance()->db)) {
+            $this->db = lava_instance()->db;
+        }
     }
 
     /**

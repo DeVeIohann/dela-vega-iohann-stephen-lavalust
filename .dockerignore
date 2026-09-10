@@ -1,0 +1,8 @@
+.env
+.git
+.gitignore
+database/lavalust.db
+runtime/session/*
+*cookies*.txt
+*headers*.txt
+*.log

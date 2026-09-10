@@ -1,5 +1,27 @@
 <?php
 define('PREVENT_DIRECT_ACCESS', TRUE);
+
+if (file_exists(__DIR__ . DIRECTORY_SEPARATOR . '.env')) {
+	$env_file = __DIR__ . DIRECTORY_SEPARATOR . '.env';
+	$env_data = parse_ini_file($env_file, true, INI_SCANNER_TYPED);
+
+	if (is_array($env_data)) {
+		foreach ($env_data as $key => $value) {
+			if (is_array($value)) {
+				foreach ($value as $nested_key => $nested_value) {
+					$_ENV[$nested_key] = $nested_value;
+					$_SERVER[$nested_key] = $nested_value;
+					putenv($nested_key . '=' . (string) $nested_value);
+				}
+			} else {
+				$_ENV[$key] = $value;
+				$_SERVER[$key] = $value;
+				putenv($key . '=' . (string) $value);
+			}
+		}
+	}
+}
+
 /**
  * ------------------------------------------------------------------
  * LavaLust - an opensource lightweight PHP MVC Framework

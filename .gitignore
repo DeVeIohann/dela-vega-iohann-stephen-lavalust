@@ -1,3 +1,6 @@
 /vendor
 .env
 *.log
+database/lavalust.db
+*cookies*.txt
+*headers*.txt

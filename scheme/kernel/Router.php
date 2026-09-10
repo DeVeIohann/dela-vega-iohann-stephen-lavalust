@@ -261,9 +261,29 @@ class Router
                 $parts[] = $optional
                     ? '(?:/(' . $capture . '))?'
                     : '/(' . $capture . ')';
-            } else {
-                $parts[] = '/' . preg_quote($segment, '#');
+                continue;
             }
+
+            if (preg_match('#^\(\:([a-zA-Z0-9_]+)\)$#', $segment, $m)) {
+                $name    = $m[1];
+                $pattern = $constraints[$name] ?? null;
+
+                if ($pattern === null) {
+                    $pattern = match ($name) {
+                        'num' => '[0-9]+',
+                        'any' => '.+',
+                        'segment' => '[^/]+',
+                        'alpha' => '[a-zA-Z]+',
+                        'alnum' => '[A-Za-z0-9]+',
+                        default => '[^/]+',
+                    };
+                }
+
+                $parts[] = '/(' . $pattern . ')';
+                continue;
+            }
+
+            $parts[] = '/' . preg_quote($segment, '#');
         }
 
         return '#^' . implode('', $parts) . '/?$#';

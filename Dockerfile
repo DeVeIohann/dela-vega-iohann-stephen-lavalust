@@ -6,6 +6,10 @@ RUN docker-php-ext-install pdo pdo_mysql
 # Enable Apache URL rewrite module for LavaLust routing
 RUN a2enmod rewrite
 
+# Keep framework runtime directories writable by Apache.
+RUN mkdir -p /var/www/html/runtime/session /var/www/html/runtime/logs && \
+  chown -R www-data:www-data /var/www/html/runtime
+
 # Copy project files into web root
 COPY . /var/www/html/
 
