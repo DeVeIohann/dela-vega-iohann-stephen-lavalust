@@ -144,6 +144,15 @@ require_once SYSTEM_DIR . 'kernel/Controller.php';
 $router = load_class('router', 'kernel', array(new Controller));
 require_once APP_DIR . 'config/routes.php';
 
+if (isset($route) && is_array($route)) {
+	foreach ($route as $uri => $callback) {
+		if ($uri === 'default_controller') {
+			continue;
+		}
+		$router->match($uri, $callback, 'GET|POST|PUT|PATCH|DELETE|OPTIONS');
+	}
+}
+
 /**
  * Instantiate LavaLust Controller
  *
@@ -156,7 +165,11 @@ function lava_instance()
 $performance->stop('lavalust');
 
 // Handle the request
-$url = $router->sanitize_url(str_replace($_SERVER['SCRIPT_NAME'], '', $_SERVER['PHP_SELF']));
+$raw_uri = $_SERVER['REQUEST_URI'] ?? $_SERVER['PHP_SELF'] ?? '/';
+$path = parse_url($raw_uri, PHP_URL_PATH) ?: $raw_uri;
+$path = preg_replace('#^/index\.php#i', '', $path);
+$path = $path === '' ? '/' : $path;
+$url = $router->sanitize_url($path);
 $method = isset($_SERVER['REQUEST_METHOD']) ? strtoupper($_SERVER['REQUEST_METHOD']) : '';
 $router->initiate($url, $method);
 ?>

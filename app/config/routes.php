@@ -2,7 +2,8 @@
 defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 $route['default_controller'] = 'AuthController';
 
-// Direct aliases
+// Root and direct aliases
+$route['/']                     = 'AuthController/login';
 $route['login']                  = 'AuthController/login';
 $route['logout']                 = 'AuthController/logout';
 
