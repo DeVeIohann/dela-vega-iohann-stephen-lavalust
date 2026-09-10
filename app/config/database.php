@@ -13,16 +13,6 @@ $db['default'] = array(
     'collate'  => 'utf8mb4_unicode_ci',
     'prefix'   => ''
 );
-$database['main'] = array(
-    'hostname' => getenv('DB_HOST') ?: 'localhost',
-    'username' => getenv('DB_USERNAME') ?: 'root',
-    'password' => getenv('DB_PASSWORD') ?: '',
-    'database' => getenv('DB_DATABASE') ?: 'defaultdb',
-    'driver'   => 'mysql',
-    'charset'  => 'utf8',
-    'collate'  => 'utf8_general_ci',
-    'port'     => getenv('DB_PORT') ?: 3306,
-    'dbprefix' => ''
-);
+
 
 

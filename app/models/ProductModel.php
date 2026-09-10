@@ -1,10 +1,10 @@
 <?php
 defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
-class Product_model extends Model {
+class ProductModel extends Model {
 
     public function get_all_products() {
-        return $this->db->table('products')->order_by('id', 'DESC')->get_all();
+        return $this->db->table('products')->get_all();
     }
 
     public function get_product_by_id($id) {
