@@ -11,4 +11,11 @@ COPY . /var/www/html/
 
 WORKDIR /var/www/html/
 
-EXPOSE 80
+ENV PORT=10000
+EXPOSE 10000
+
+CMD sed -i "s/Listen 80/Listen ${PORT}/g" /etc/apache2/ports.conf 2>/dev/null || true; \
+    if [ -f /etc/apache2/sites-available/000-default.conf ]; then \
+      sed -i "s/:80/:${PORT}/g" /etc/apache2/sites-available/000-default.conf 2>/dev/null || true; \
+    fi; \
+    apache2-foreground

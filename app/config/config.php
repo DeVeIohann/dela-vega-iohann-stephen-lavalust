@@ -64,7 +64,8 @@ $config['VERSION']                 = '4.5.0';
 | -------------------------------------------------------------------
 | Values: development and production
 */
-$config['ENVIRONMENT']             = 'development';
+$render_env = getenv('RENDER') ? 'production' : 'development';
+$config['ENVIRONMENT']             = getenv('APP_ENV') ?: $render_env;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,7 +80,10 @@ $config['ENVIRONMENT']             = 'development';
 | WARNING: You MUST set this value!
 |
 */
-$config['base_url'] 				= 'http://localhost:8080/';
+$default_host = $_SERVER['HTTP_HOST'] ?? $_SERVER['SERVER_NAME'] ?? 'localhost';
+$default_scheme = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (!empty($_SERVER['SERVER_PORT']) && (int) $_SERVER['SERVER_PORT'] === 443)) ? 'https' : 'http';
+$default_base_url = $default_scheme . '://' . $default_host . '/';
+$config['base_url'] = rtrim((string) (getenv('APP_URL') ?: getenv('RENDER_EXTERNAL_URL') ?: $default_base_url), '/') . '/';
 
 /*
 |--------------------------------------------------------------------------
@@ -90,7 +94,7 @@ $config['base_url'] 				= 'http://localhost:8080/';
 | variable to blank.
 |
 */
-$config['index_page']               = 'index.php';
+$config['index_page']               = '';
 
 /*
 |--------------------------------------------------------------------------
