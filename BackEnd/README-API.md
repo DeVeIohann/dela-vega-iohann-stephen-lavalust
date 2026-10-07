@@ -6,7 +6,7 @@ This LavaLust application provides a JSON API for the React ProductDesk client.
 
 Create an Aiven MySQL database, then import `schema.sql`. It creates the `products` table and a `users` table for login credentials. User passwords are stored as PHP password hashes.
 
-Set these environment variables for the PHP application:
+Set these environment variables for the PHP application. A ready-to-copy example is in [`.env.example`](./.env.example):
 
 - `MYSQL_HOST`
 - `MYSQL_PORT`
@@ -15,6 +15,7 @@ Set these environment variables for the PHP application:
 - `MYSQL_PASSWORD`
 - `MYSQL_SSL_CA` (path to Aiven's CA certificate, if required by the service)
 - `JWT_SECRET` (a randomly generated secret of at least 32 characters)
+- `JWT_REFRESH_SECRET` (a separate secret for refresh-token encryption)
 - `FRONTEND_ORIGIN` (the exact origin serving the React app, such as `https://your-app.example`)
 
 Generate a JWT secret with `php -r "echo bin2hex(random_bytes(32)), PHP_EOL;"`. Never commit database credentials or JWT secrets.
